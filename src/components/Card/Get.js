@@ -49,7 +49,7 @@ function Create() {
                 <th>Expiration Month</th>
                 <th>Expiration Year</th>
                 <th>Security Code</th>
-                <td>Card Type</td>
+                <th>Card Type</th>
                 <th>Action</th>
               </tr>
             </thead>
