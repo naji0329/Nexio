@@ -14,6 +14,8 @@ import AdminDashboard from './components/Dashboard';
 import CreateCard from './components/Card/Create';
 import GetCards from './components/Card/Get';
 
+import './App.scss';
+
 function App() {
   useEffect(() => {
     // check for token in LS when app first runs

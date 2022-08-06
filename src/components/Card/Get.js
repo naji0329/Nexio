@@ -36,7 +36,7 @@ function Create() {
         "firstSix": null,
         "lastFour": null */}
         <div className="mt-20 m-auto">
-          <table>
+          <table className="table">
             <thead>
               <tr>
                 <th>#</th>
@@ -51,13 +51,17 @@ function Create() {
             <tbody>
               {!isLoading && cards.length === 0 ? (
                 <tr>
-                  <td colSpan={7}>Nothing Cards</td>
+                  <td colSpan={7} className="text-center">
+                    Nothing Cards
+                  </td>
                 </tr>
               ) : null}
 
               {isLoading ? (
                 <tr>
-                  <td colSpan={7}>Loading...</td>
+                  <td colSpan={7} className="text-center">
+                    Loading...
+                  </td>
                 </tr>
               ) : null}
 
