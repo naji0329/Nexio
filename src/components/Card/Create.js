@@ -13,8 +13,8 @@ function Create() {
     encryptedNumber: '',
     expirationMonth: '',
     expirationYear: '',
-    firstSix: '',
-    lastFour: '',
+    // firstSix: '',
+    // lastFour: '',
     securityCode: ''
   });
 
@@ -25,8 +25,8 @@ function Create() {
     encryptedNumber,
     expirationMonth,
     expirationYear,
-    firstSix,
-    lastFour,
+    // firstSix,
+    // lastFour,
     securityCode
   } = formData;
 
@@ -43,8 +43,8 @@ function Create() {
         encryptedNumber,
         expirationMonth,
         expirationYear,
-        firstSix,
-        lastFour,
+        // firstSix,
+        // lastFour,
         securityCode
       })
     );
@@ -64,7 +64,7 @@ function Create() {
           <form className="form" onSubmit={onSubmit}>
             <div className="grid grid-cols-2 gap-5">
               <div className="mt-0">
-                <p className="font-medium">Card Holder Name</p>
+                <p className="font-medium">Name on Card</p>
                 <input
                   type={'text'}
                   name="cardHolderName"
@@ -104,26 +104,30 @@ function Create() {
                 />
               </div>
               <div className="mt-0">
-                <p className="font-medium">Expiration Month</p>
-                <input
-                  type={'text'}
-                  name="expirationMonth"
-                  value={expirationMonth}
-                  onChange={onChange}
-                  className="border border-[#5C6BC0] px-4 py-2 w-full rounded shadow-sm mt-2"
-                />
-              </div>
-              <div className="mt-0">
-                <p className="font-medium">Expiration Year</p>
+                <p className="font-medium">Expiry Year</p>
                 <input
                   type={'text'}
                   name="expirationYear"
                   value={expirationYear}
+                  placeholder="YY"
+                  maxLength={2}
                   onChange={onChange}
                   className="border border-[#5C6BC0] px-4 py-2 w-full rounded shadow-sm mt-2"
                 />
               </div>
               <div className="mt-0">
+                <p className="font-medium">Expiry Month</p>
+                <input
+                  type={'text'}
+                  name="expirationMonth"
+                  value={expirationMonth}
+                  placeholder="MM"
+                  maxLength={2}
+                  onChange={onChange}
+                  className="border border-[#5C6BC0] px-4 py-2 w-full rounded shadow-sm mt-2"
+                />
+              </div>
+              {/* <div className="mt-0">
                 <p className="font-medium">First Six</p>
                 <input
                   type={'text'}
@@ -142,11 +146,14 @@ function Create() {
                   onChange={onChange}
                   className="border border-[#5C6BC0] px-4 py-2 w-full rounded shadow-sm mt-2"
                 />
-              </div>
+              </div> */}
               <div className="mt-0">
-                <p className="font-medium">Security Code</p>
+                <p className="font-medium">Security code</p>
                 <input
                   type={'text'}
+                  maxLength="3"
+                  pattern="[0-9][0-9][0-9]"
+                  placeholder="XXX"
                   name="securityCode"
                   value={securityCode}
                   onChange={onChange}
