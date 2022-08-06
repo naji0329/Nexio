@@ -1,4 +1,4 @@
-import { CREATE_CARD, GET_CARDS } from '../actions/types';
+import { CREATE_CARD, GET_CARDS, DELETE_CARD } from '../actions/types';
 
 const initialState = {
   cards: [],
@@ -21,6 +21,12 @@ function cardReducer(state = initialState, action) {
       return {
         ...state,
         cards: payload,
+        loading: false
+      };
+    case DELETE_CARD:
+      return {
+        ...state,
+        cards: state.cards.filter((card) => card.uuid !== payload),
         loading: false
       };
     default:

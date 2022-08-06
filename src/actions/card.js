@@ -1,7 +1,7 @@
 import api from '../utils/api';
 import { setAlert } from './alert';
 
-import { CREATE_CARD, CARD_ERROR, GET_CARDS } from './types';
+import { CREATE_CARD, CARD_ERROR, GET_CARDS, DELETE_CARD } from './types';
 
 /*
   NOTE: we don't need a config object for axios as the
@@ -42,9 +42,30 @@ export const getCards = () => async (dispatch) => {
       type: GET_CARDS,
       payload: res.data
     });
+
+    return res.data;
   } catch (err) {
     console.log(err);
     alert(err.response.data.body);
+    dispatch({
+      type: CARD_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Delete post
+export const deleteCard = (_UUID) => async (dispatch) => {
+  try {
+    await api.post('/v1/nexio/card/deleteCard?cardUUID=' + _UUID);
+
+    dispatch({
+      type: DELETE_CARD,
+      payload: _UUID
+    });
+
+    alert('Card Removed');
+  } catch (err) {
     dispatch({
       type: CARD_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }

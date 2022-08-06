@@ -18,6 +18,14 @@ function Create() {
     getCardsData();
   }, []);
 
+  async function deleteCardData(_UUID) {
+    try {
+      dispatch(deleteCardData(_UUID));
+    } catch (error) {
+      alert('Something Wrong.');
+    }
+  }
+
   return (
     <div>
       <div className="n-container">
@@ -47,6 +55,7 @@ function Create() {
                 <th>Expiration Month</th>
                 <th>Expiration Year</th>
                 <th>Security Code</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -78,6 +87,13 @@ function Create() {
                       <td>{row.expirationYear}</td>
                       <td>{row.cardType}</td>
                       <td>{row.securityCode}</td>
+                      <td>
+                        <p
+                          className="text-red-700 cursor-pointer"
+                          onClick={() => deleteCardData(row.cardUUID)}>
+                          Delete
+                        </p>
+                      </td>
                     </tr>
                   );
                 })}

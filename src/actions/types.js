@@ -27,3 +27,4 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const CREATE_CARD = 'CREATE_CARD';
 export const CARD_ERROR = 'CARD_ERROR';
 export const GET_CARDS = 'GET_CARDS';
+export const DELETE_CARD = 'DELETE_CARD';
