@@ -9,18 +9,21 @@ function Create() {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getCardsData() {
-      setLoading(true);
-      const res = await dispatch(getCards());
-      setCards(res);
-      setLoading(false);
-    }
     getCardsData();
   }, []);
 
+  async function getCardsData() {
+    setLoading(true);
+    const res = await dispatch(getCards());
+    setCards(res);
+    setLoading(false);
+  }
+
   async function deleteCardData(_UUID) {
     try {
-      dispatch(deleteCardData(_UUID));
+      console.log('delete card', _UUID);
+      await dispatch(deleteCardData(_UUID));
+      await getCardsData();
     } catch (error) {
       alert('Something Wrong.');
     }
@@ -35,15 +38,7 @@ function Create() {
           </Link>
         </div>
         <h1 className="text-4xl font-bold underline text-center">Get Cards</h1>
-        {/* "cardUUID": "3fd79852-b53d-310b-ac24-dfe845b75ec7",
-        "cardHolderName": "Ignacio Antonio",
-        "encryptedNumber": null,
-        "expirationMonth": "06",
-        "expirationYear": "26",
-        "cardType": "Amex",
-        "securityCode": "615",
-        "firstSix": null,
-        "lastFour": null */}
+
         <div className="mt-20 m-auto">
           <table className="table">
             <thead>
@@ -51,7 +46,6 @@ function Create() {
                 <th>#</th>
                 <th>UUID</th>
                 <th>Holder Name</th>
-                <th>Encrypted Number</th>
                 <th>Expiration Month</th>
                 <th>Expiration Year</th>
                 <th>Security Code</th>
@@ -61,7 +55,7 @@ function Create() {
             <tbody>
               {!isLoading && cards.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center">
+                  <td colSpan={8} className="text-center">
                     Nothing Cards
                   </td>
                 </tr>
@@ -69,7 +63,7 @@ function Create() {
 
               {isLoading ? (
                 <tr>
-                  <td colSpan={7} className="text-center">
+                  <td colSpan={8} className="text-center">
                     Loading...
                   </td>
                 </tr>
@@ -82,7 +76,6 @@ function Create() {
                       <td>{key + 1}</td>
                       <td>{row.cardUUID}</td>
                       <td>{row.cardHolderName}</td>
-                      <td>{row.encryptedNumber}</td>
                       <td>{row.expirationMonth}</td>
                       <td>{row.expirationYear}</td>
                       <td>{row.cardType}</td>
