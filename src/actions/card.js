@@ -1,7 +1,7 @@
 import api from '../utils/api';
 import { setAlert } from './alert';
 
-import { CREATE_CARD, CARD_ERROR } from './types';
+import { CREATE_CARD, CARD_ERROR, GET_CARDS } from './types';
 
 /*
   NOTE: we don't need a config object for axios as the
@@ -21,8 +21,27 @@ export const createCard = (formData) => async (dispatch) => {
       payload: res.data
     });
 
-    alert(`uccessfully created.`);
+    alert(`successfully created.`);
     dispatch(setAlert('Successfully created.', 'success'));
+  } catch (err) {
+    console.log(err);
+    alert(err.response.data.body);
+    dispatch({
+      type: CARD_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get Cards
+export const getCards = () => async (dispatch) => {
+  try {
+    const res = await api.get('/v1/nexio/card/getCards');
+
+    dispatch({
+      type: GET_CARDS,
+      payload: res.data
+    });
   } catch (err) {
     console.log(err);
     alert(err.response.data.body);

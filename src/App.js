@@ -12,6 +12,7 @@ import setAuthToken from './utils/setAuthToken';
 
 import AdminDashboard from './components/Dashboard';
 import CreateCard from './components/Card/Create';
+import GetCards from './components/Card/Get';
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AdminDashboard />} />
           <Route path="/card/create" element={<CreateCard />} />
+          <Route path="/card/get" element={<GetCards />} />
         </Routes>
       </Router>
     </Provider>

@@ -1,4 +1,4 @@
-import { CREATE_CARD } from '../actions/types';
+import { CREATE_CARD, GET_CARDS } from '../actions/types';
 
 const initialState = {
   cards: [],
@@ -15,6 +15,12 @@ function cardReducer(state = initialState, action) {
       return {
         ...state,
         cards: [payload, ...state.cards],
+        loading: false
+      };
+    case GET_CARDS:
+      return {
+        ...state,
+        cards: payload,
         loading: false
       };
     default:
