@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCards } from '../../actions/card';
+import { deleteCard, getCards } from '../../actions/card';
 
 function Create() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function Create() {
   async function deleteCardData(_UUID) {
     try {
       console.log('delete card', _UUID);
-      await dispatch(deleteCardData(_UUID));
+      await dispatch(deleteCard(_UUID));
       await getCardsData();
     } catch (error) {
       alert('Something Wrong.');
@@ -84,7 +84,9 @@ function Create() {
                       <td>
                         <p
                           className="text-red-700 cursor-pointer"
-                          onClick={() => deleteCardData(row.cardUUID)}>
+                          onClick={() => {
+                            deleteCardData(row.cardUUID);
+                          }}>
                           Delete
                         </p>
                       </td>
