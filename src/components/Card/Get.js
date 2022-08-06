@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getCards } from '../../actions/card';
 
 function Create() {
   const dispatch = useDispatch();
@@ -8,13 +9,13 @@ function Create() {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getCards() {
+    async function getCardsData() {
       setLoading(true);
       const res = await dispatch(getCards());
       setCards(res);
       setLoading(false);
     }
-    getCards();
+    getCardsData();
   }, []);
 
   return (
