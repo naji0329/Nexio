@@ -13,7 +13,7 @@
     @apply bg-white;
 
     tr td {
-      @apply p-1 text-sm sm:p-2 border border-black/25;
+      @apply p-1 text-sm sm:p-2 border border-black/25 text-center;
       // display: flex;
       // align-items: center;
     }

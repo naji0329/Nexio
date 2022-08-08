@@ -15,12 +15,12 @@ function Dashboard() {
         <div className="grid sm:grid-cols-2 gap-10 mt-20">
           <Link to={'/card/get'}>
             <div className="px-6 py-4 border border-[#5C6BC0] text-[#5C6BC0] cursor-pointer font-medium rounded shadow-lg">
-              Get Cards
+              Card List
             </div>
           </Link>
-          <Link to={'/card/create'}>
+          <Link to={'/transaction/get'}>
             <div className="px-6 py-4 border border-[#5C6BC0] text-[#5C6BC0] cursor-pointer font-medium rounded shadow-lg">
-              Save Card
+              Transaction List
             </div>
           </Link>
         </div>

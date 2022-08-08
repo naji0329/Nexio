@@ -37,9 +37,16 @@ function Create() {
             <img src="/img/logo-white.png" className="cursor-pointer" alt="" />
           </Link>
         </div>
-        <h1 className="text-4xl font-bold underline text-center">Get Cards</h1>
+        <h1 className="text-4xl font-bold underline text-center">Cards</h1>
+        <div className="flex justify-end mt-10">
+          <Link to={'/card/create'}>
+            <div className="px-4 py-2 border border-[#5C6BC0] text-[#5C6BC0] cursor-pointer font-medium text-center rounded w-32 shadow-lg">
+              Save Card
+            </div>
+          </Link>
+        </div>
 
-        <div className="mt-20 m-auto">
+        <div className="mt-5 m-auto">
           <table className="table">
             <thead>
               <tr>

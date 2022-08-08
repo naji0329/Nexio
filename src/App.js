@@ -11,8 +11,10 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
 import AdminDashboard from './components/Dashboard';
-import CreateCard from './components/Card/Create';
-import GetCards from './components/Card/Get';
+import CreateCard from './components/card/Create';
+import GetCards from './components/card/Get';
+import CreateTransaction from './components/transaction/Create';
+import GetTransactions from './components/transaction/Get';
 
 import './App.scss';
 
@@ -39,8 +41,12 @@ function App() {
         <Alert />
         <Routes>
           <Route path="/" element={<AdminDashboard />} />
+
           <Route path="/card/create" element={<CreateCard />} />
           <Route path="/card/get" element={<GetCards />} />
+
+          <Route path="/transaction/get" element={<GetTransactions />} />
+          <Route path="/transaction/create" element={<CreateTransaction />} />
         </Routes>
       </Router>
     </Provider>

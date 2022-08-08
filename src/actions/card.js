@@ -46,7 +46,6 @@ export const getCards = () => async (dispatch) => {
     return res.data;
   } catch (err) {
     console.log(err);
-    alert(err.response.data.body);
     dispatch({
       type: CARD_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
