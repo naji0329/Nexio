@@ -91,7 +91,7 @@ function Create() {
                     <tr key={key}>
                       <td>{key + 1}</td>
                       <td>{row.cardTransactionCompositeKey.cardUUID}</td>
-                      <td className="max-w-[200px]">
+                      <td className="max-w-[200px] overflow-scroll">
                         {row.cardTransactionCompositeKey.transactionId}
                       </td>
                       <td>{row.amount}</td>
