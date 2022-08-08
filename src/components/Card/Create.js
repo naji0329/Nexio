@@ -50,7 +50,7 @@ function Create() {
       })
     );
 
-    navigate('/transaction/get');
+    navigate('/card/get');
   };
 
   return (
