@@ -61,14 +61,15 @@ export const getTransactions = () => async (dispatch) => {
 // Void Transaction
 export const voidTransaction = (transactionId) => async (dispatch) => {
   try {
-    await api.post('/v1/nexio/transaction/voidTransact?transactionId=' + transactionId);
+    const res = await api.post('/v1/nexio/transaction/voidTransact?transactionId=' + transactionId);
 
     dispatch({
       type: VOID_TRANSACTION,
       payload: transactionId
     });
 
-    alert('VOID TRANSACTION SUCCESS!');
+    console.log(res);
+    alert(res.body);
   } catch (err) {
     console.log(err);
     alert(err.response.data.body);
@@ -82,14 +83,17 @@ export const voidTransaction = (transactionId) => async (dispatch) => {
 // Void Transaction
 export const refundTransaction = (transactionId) => async (dispatch) => {
   try {
-    await api.post('/v1/nexio/transaction/refundTransact?transactionId=' + transactionId);
+    const res = await api.post(
+      '/v1/nexio/transaction/refundTransact?transactionId=' + transactionId
+    );
 
     dispatch({
       type: REFUND_TRANSACTION,
       payload: transactionId
     });
 
-    alert('REFUND TRANSACTION SUCCESS!');
+    console.log(res);
+    alert(res.body);
   } catch (err) {
     console.log(err);
     alert(err.response.data.body);
