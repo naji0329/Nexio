@@ -69,7 +69,7 @@ export const voidTransaction = (transactionId) => async (dispatch) => {
     });
 
     console.log(res);
-    alert(res.body);
+    alert(res.data.body);
   } catch (err) {
     console.log(err);
     alert(err.response.data.body);
@@ -93,7 +93,7 @@ export const refundTransaction = (transactionId) => async (dispatch) => {
     });
 
     console.log(res);
-    alert(res.body);
+    alert(res.data.body);
   } catch (err) {
     console.log(err);
     alert(err.response.data.body);
