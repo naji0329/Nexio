@@ -61,7 +61,7 @@ function Create() {
               <tr>
                 <th>#</th>
                 <th>Card UUID</th>
-                <th>Transaction Id</th>
+                <th className="max-w-[200px]">Transaction Id</th>
                 <th>Amount</th>
                 <th>Currency</th>
                 <th>Time</th>
@@ -91,7 +91,9 @@ function Create() {
                     <tr key={key}>
                       <td>{key + 1}</td>
                       <td>{row.cardTransactionCompositeKey.cardUUID}</td>
-                      <td>{row.cardTransactionCompositeKey.transactionId}</td>
+                      <td className="max-w-[200px]">
+                        {row.cardTransactionCompositeKey.transactionId}
+                      </td>
                       <td>{row.amount}</td>
                       <td>{row.currency}</td>
                       <td>{row.localTransactionDateTime}</td>
