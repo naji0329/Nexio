@@ -7,6 +7,7 @@ import { createCard } from '../../actions/card';
 function Create() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isLoading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     cardHolderName: '',
     cardType: '',
@@ -35,6 +36,7 @@ function Create() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     await dispatch(
       createCard({
@@ -50,6 +52,7 @@ function Create() {
       })
     );
 
+    setLoading(false);
     navigate('/card/get');
   };
 
@@ -166,8 +169,9 @@ function Create() {
             </div>
             <div className="mt-10 flex justify-center gap-5">
               <input
+                disabled={isLoading}
                 type="submit"
-                value={'Create'}
+                value={isLoading ? 'Loading...' : 'Create'}
                 className="w-32 px-6 py-3 border border-[#5C6BC0] text-[#5C6BC0] cursor-pointer font-medium rounded shadow-lg"
               />
               <Link to={'/'}>

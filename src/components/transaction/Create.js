@@ -7,6 +7,7 @@ import { createTransaction } from '../../actions/transaction';
 function Create() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isLoading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     cardUUID: '',
     amount: '',
@@ -19,6 +20,7 @@ function Create() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     await dispatch(
       createTransaction(cardUUID, {
@@ -27,6 +29,7 @@ function Create() {
       })
     );
 
+    setLoading(false);
     navigate('/transaction/get');
   };
 
@@ -77,7 +80,8 @@ function Create() {
             <div className="mt-10 flex justify-center gap-5">
               <input
                 type="submit"
-                value={'Create'}
+                value={isLoading ? 'Loading...' : 'Create'}
+                disabled={isLoading}
                 className="w-32 px-6 py-3 border border-[#5C6BC0] text-[#5C6BC0] cursor-pointer font-medium rounded shadow-lg"
               />
               <Link to={'/'}>
