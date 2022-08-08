@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { setAlert } from '../../../actions/alert';
 import { createTransaction } from '../../actions/transaction';
 
 function Create() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     cardUUID: '',
@@ -19,12 +20,14 @@ function Create() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(
+    await dispatch(
       createTransaction(cardUUID, {
         amount,
         currency
       })
     );
+
+    navigate('/transaction/get');
   };
 
   return (

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { setAlert } from '../../../actions/alert';
 import { createCard } from '../../actions/card';
 
 function Create() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     cardHolderName: '',
@@ -35,7 +36,7 @@ function Create() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(
+    await dispatch(
       createCard({
         cardHolderName,
         cardType,
@@ -48,6 +49,8 @@ function Create() {
         securityCode
       })
     );
+
+    navigate('/transaction/get');
   };
 
   return (
