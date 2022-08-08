@@ -22,7 +22,7 @@ function Create() {
     e.preventDefault();
     setLoading(true);
 
-    await dispatch(
+    const res = await dispatch(
       createTransaction(cardUUID, {
         amount,
         currency
@@ -30,7 +30,9 @@ function Create() {
     );
 
     setLoading(false);
-    navigate('/transaction/get');
+    if (res) {
+      navigate('/transaction/get');
+    }
   };
 
   return (

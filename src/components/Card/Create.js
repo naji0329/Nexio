@@ -38,7 +38,7 @@ function Create() {
     e.preventDefault();
     setLoading(true);
 
-    await dispatch(
+    const res = await dispatch(
       createCard({
         cardHolderName,
         cardType,
@@ -53,7 +53,9 @@ function Create() {
     );
 
     setLoading(false);
-    navigate('/card/get');
+    if (res) {
+      navigate('/card/get');
+    }
   };
 
   return (

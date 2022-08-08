@@ -28,13 +28,22 @@ export const createTransaction = (UUID, formData) => async (dispatch) => {
 
     alert(`successfully created.`);
     dispatch(setAlert('Successfully created.', 'success'));
+
+    return true;
   } catch (err) {
     console.log(err);
-    alert(err.response.data.body);
+
+    const errors = err.response.data.errors;
+    if (errors.length > 0) {
+      alert(errors[0]);
+    }
+
     dispatch({
       type: TRANSACTION_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+
+    return false;
   }
 };
 
