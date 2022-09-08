@@ -65,6 +65,7 @@ function Create() {
                 <th>Amount</th>
                 <th>Currency</th>
                 <th>Time</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -79,7 +80,7 @@ function Create() {
 
               {isLoading ? (
                 <tr>
-                  <td colSpan={7} className="text-center">
+                  <td colSpan={8} className="text-center">
                     Loading...
                   </td>
                 </tr>
@@ -97,21 +98,26 @@ function Create() {
                       <td>{row.amount}</td>
                       <td>{row.currency}</td>
                       <td>{row.localTransactionDateTime}</td>
+                      <td>{row.transactionStatus}</td>
                       <td>
-                        <p
-                          className="text-green-700 cursor-pointer"
-                          onClick={() => {
-                            voidTransactionData(row.cardTransactionCompositeKey.transactionId);
-                          }}>
-                          Void
-                        </p>
-                        <p
-                          className="text-red-700 cursor-pointer"
-                          onClick={() => {
-                            refundTransactionData(row.cardTransactionCompositeKey.transactionId);
-                          }}>
-                          Refund
-                        </p>
+                        {row.transactionStatus === 'pending' && (
+                          <p
+                            className="text-green-700 cursor-pointer"
+                            onClick={() => {
+                              voidTransactionData(row.cardTransactionCompositeKey.transactionId);
+                            }}>
+                            Void
+                          </p>
+                        )}
+                        {row.transactionStatus === 'seted' && (
+                          <p
+                            className="text-red-700 cursor-pointer"
+                            onClick={() => {
+                              refundTransactionData(row.cardTransactionCompositeKey.transactionId);
+                            }}>
+                            Refund
+                          </p>
+                        )}
                       </td>
                     </tr>
                   );
